@@ -1,6 +1,6 @@
 
 
-//Hello:)
+
 public class Main {
 
 }
