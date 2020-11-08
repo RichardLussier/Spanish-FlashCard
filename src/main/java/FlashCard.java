@@ -24,7 +24,7 @@ public abstract class FlashCard {
     {
         String ending = findEnding(verb);
         String stem = verb.substring(0, verb.length() -2);
-        Dictionary<String, String> conjugations = new Dictionary<String, String>() {};
+        VerbDictionary<String, String> conjugations = new VerbDictionary();
 
         if (checkIrreg(verb, tense))
             return conjugateIrreg(verb, subject, tense);
@@ -33,41 +33,45 @@ public abstract class FlashCard {
             if (ending.equals("ar"))
             {
                 addPreteriteAr(conjugations);
-                return stem + conjugations.get(subject);
-            }
-            if (ending.equals("er") || ending.equals("ir"))
+                return stem + conjugations.getValue(subject);
+            } //end of if
+            else if (ending.equals("er") || ending.equals("ir"))
             {
                 addPreteriteErIr(conjugations);
-                return stem + conjugations.get(subject);
-            }
-        }
-    }
+                return stem + conjugations.getValue(subject);
+            } //end of if
+            else{
+                throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
+            } //end of else
+        } //end of if
+        return "";
+    } //end of conjugateVerb method
 
     /**
      * a method to add the correct preterite endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPreteriteAr(Dictionary conjugations)
+    private void addPreteriteAr(VerbDictionary conjugations)
     {
-        conjugations.put("yo", "e");
-        conjugations.put("tu", "aste");
-        conjugations.put("usted", "o");
-        conjugations.put("nosotros", "amos");
-        conjugations.put("ustedes", "aron");
-    }
+        conjugations.add("yo", "e");
+        conjugations.add("tu", "aste");
+        conjugations.add("usted", "o");
+        conjugations.add("nosotros", "amos");
+        conjugations.add("ustedes", "aron");
+    } //end of addPreteriteAr method
 
     /**
      * a method to add the correct preterite endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPreteriteErIr(Dictionary conjugations)
+    private void addPreteriteErIr(VerbDictionary conjugations)
     {
-        conjugations.put("yo", "i");
-        conjugations.put("tu", "iste");
-        conjugations.put("usted", "io");
-        conjugations.put("nosotros", "emos");
-        conjugations.put("ustedes", "ieron");
-    }
+        conjugations.add("yo", "i");
+        conjugations.add("tu", "iste");
+        conjugations.add("usted", "io");
+        conjugations.add("nosotros", "emos");
+        conjugations.add("ustedes", "ieron");
+    } //end of addPreteriteErIr method
 
     /**
      * a method to find the type of verb
@@ -77,7 +81,7 @@ public abstract class FlashCard {
     private String findEnding(String verb)
     {
         return verb.substring(verb.length()-2);
-    }
+    } //end of findEnding method
 
     /**
      * a method to check if the verb given is irregular
@@ -88,7 +92,7 @@ public abstract class FlashCard {
     private boolean checkIrreg(String verb, String tense)
     {
         return true; // will check for irregulars
-    }
+    } //end of checkIrreg method
 
     /**
      * a method to conjugate irregular verbs
@@ -100,7 +104,7 @@ public abstract class FlashCard {
     private String conjugateIrreg(String verb, String subject, String tense)
     {
         return "";
-    }
+    } //end of conjugateIrreg method
 
     /**
      * an array list of verbs to be used
@@ -117,7 +121,7 @@ public abstract class FlashCard {
         while (data.hasNext())
         {
             verbs.add(data.next().trim());
-        }
+        } //end of while
         data.close();
-    }
+    } //end of readFile method
 }
