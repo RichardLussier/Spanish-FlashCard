@@ -9,7 +9,7 @@ public class Main {
 
         String verbFile = "Verbs.txt";
         FlashCard test = new FlashCard();
-        ArrayList verbs = new ArrayList<>();
+        ArrayList<String> verbs = new ArrayList<>();
 
         try{
             Scanner data = new Scanner(new File(verbFile));

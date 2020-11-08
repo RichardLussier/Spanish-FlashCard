@@ -21,7 +21,7 @@ public class FlashCard {
     {
         String ending = findEnding(verb);
         String stem = verb.substring(0, verb.length() -2);
-        VerbDictionary<String, String> conjugations = new VerbDictionary();
+        VerbDictionary<String, String> conjugations = new VerbDictionary<>();
         String conjugatedVerb;
 
         if (checkIrreg(verb, tense))
@@ -89,7 +89,7 @@ public class FlashCard {
      * a method to add the correct preterite endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPreteriteAr(VerbDictionary conjugations)
+    private void addPreteriteAr(VerbDictionary<String, String> conjugations)
     {
         conjugations.add("yo", "e");
         conjugations.add("tu", "aste");
@@ -102,7 +102,7 @@ public class FlashCard {
      * a method to add the correct preterite endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPreteriteErIr(VerbDictionary conjugations)
+    private void addPreteriteErIr(VerbDictionary<String, String> conjugations)
     {
         conjugations.add("yo", "i");
         conjugations.add("tu", "iste");
@@ -115,7 +115,7 @@ public class FlashCard {
      * a method to add the correct present endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPresentAr(VerbDictionary conjugations){
+    private void addPresentAr(VerbDictionary<String, String> conjugations){
         conjugations.add("yo", "o");
         conjugations.add("tu", "as");
         conjugations.add("usted", "a");
@@ -127,7 +127,7 @@ public class FlashCard {
      * a method to add the correct present endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addPresentErIr(VerbDictionary conjugations){
+    private void addPresentErIr(VerbDictionary<String, String> conjugations){
         conjugations.add("yo", "o");
         conjugations.add("tu", "es");
         conjugations.add("usted", "e");
@@ -139,7 +139,7 @@ public class FlashCard {
      * a method to add the correct future endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addFutureAll(VerbDictionary conjugations){
+    private void addFutureAll(VerbDictionary<String, String> conjugations){
         conjugations.add("yo", "e");
         conjugations.add("tu", "as");
         conjugations.add("usted", "a");
@@ -151,7 +151,7 @@ public class FlashCard {
      * a method to add the correct imperfect endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addImperfectAr(VerbDictionary conjugations){
+    private void addImperfectAr(VerbDictionary<String, String> conjugations){
         conjugations.add("yo", "aba");
         conjugations.add("tu", "abas");
         conjugations.add("usted", "aba");
@@ -163,7 +163,7 @@ public class FlashCard {
      * a method to add the correct imperfect endings to a dictionary
      * @param conjugations the dictionary to be added to
      */
-    private void addImperfectErIr(VerbDictionary conjugations){
+    private void addImperfectErIr(VerbDictionary<String, String> conjugations){
         conjugations.add("yo", "ia");
         conjugations.add("tu", "ias");
         conjugations.add("usted", "ia");
@@ -214,7 +214,7 @@ public class FlashCard {
      * stores the verbs in the verbs array list
      * @param data the scanner that will read the verbs
      */
-    public ArrayList readFile(Scanner data)
+    public ArrayList<String> readFile(Scanner data)
     {
         while (data.hasNext())
         {
