@@ -13,13 +13,19 @@ public class PresentCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
         String stem = verb.substring(0, verb.length() - 2);
-        if (ending.equals("ar")) {
+        if (checkIrreg())
+            conjugateIrreg();
+        else if (ending.equals("ar")) {
             addPresentAr();
             answer = stem + conjugations.getValue(subject);
         } //end of if
         else if (ending.equals("er") || ending.equals("ir")) {
-            addPresentErIr();
-            answer = stem + conjugations.getValue(subject);
+            if (subject.equals("nosotros") && ending.equals("ir"))
+                answer = stem + "imos";
+            else {
+                addPresentErIr();
+                answer = stem + conjugations.getValue(subject);
+            } // end of if
         } //end of if
         else {
             throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");

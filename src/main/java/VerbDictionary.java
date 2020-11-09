@@ -36,7 +36,7 @@ public class VerbDictionary<K, V> {
     /**
      * This method takes a key and returns whether the key exists in the dictionary
      * @param key: the key we want to search for
-     * @return: true if th ekey is inside of the dictionary, false otherwise
+     * @return: true if the key is inside of the dictionary, false otherwise
      */
     private boolean contains(K key){
         return getIndexOf(key) != -1;
