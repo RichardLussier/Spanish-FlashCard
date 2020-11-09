@@ -1,8 +1,11 @@
+/**
+ * This class holds the methods needed to create a card in the imperfect tense
+ */
 public class ImperfectCard extends FlashCard {
 
     ImperfectCard(String verb, String subject) {
         super(verb, subject);
-    }
+    } //end of constructor
 
     /**
      * a method to conjugate the verb
@@ -24,7 +27,7 @@ public class ImperfectCard extends FlashCard {
         else {
             throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
         } //end of else
-    }
+    } //end of conjugateVerb method
 
     /**
      * a method to add the correct imperfect endings to a dictionary
@@ -57,7 +60,7 @@ public class ImperfectCard extends FlashCard {
     @Override
     protected boolean checkIrreg() {
         return false;
-    }
+    } //end of checkIrreg method
 
     /**
      * a method to conjugate irregular verbs
@@ -67,5 +70,5 @@ public class ImperfectCard extends FlashCard {
     @Override
     protected String conjugateIrreg() {
         return null;
-    }
-}
+    } //end of conjugateIrreg method
+} //end of ImperfectCard class

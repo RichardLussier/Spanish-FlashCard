@@ -1,8 +1,11 @@
+/**
+ * This class holds the methods needed to create a card in the future tense
+ */
 public class FutureCard extends FlashCard {
 
     FutureCard(String verb, String subject) {
         super(verb, subject);
-    }
+    } //end of constructor
 
     /**
      * a method to conjugate the verb
@@ -20,7 +23,7 @@ public class FutureCard extends FlashCard {
         else {
             throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
         } //end of else
-    }
+    } //end of conjugateVerb method
 
     /**
      * a method to add the correct future endings to a dictionary
@@ -41,7 +44,7 @@ public class FutureCard extends FlashCard {
     @Override
     protected boolean checkIrreg() {
         return false;
-    }
+    } //end of checkIrreg method
 
     /**
      * a method to conjugate irregular verbs
@@ -51,5 +54,5 @@ public class FutureCard extends FlashCard {
     @Override
     protected String conjugateIrreg() {
         return null;
-    }
-}
+    } //end of conjugateIrreg method
+} //end of FutureCard method

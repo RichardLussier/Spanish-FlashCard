@@ -25,6 +25,7 @@ public class VerbDictionary<K, V> {
      * @param value: the value we want to add to the dictionary
      */
     public void add(K key, V value){
+        checkInitialization();
         if(contains(key)){
             int replaceAt = getIndexOf(key);
             dictionary[replaceAt].setValue(value);

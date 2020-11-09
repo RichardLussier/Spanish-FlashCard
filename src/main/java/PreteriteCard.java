@@ -1,8 +1,11 @@
+/**
+ * This class holds the methods needed to create a flashcard in the preterite tense
+ */
 public class PreteriteCard extends FlashCard {
 
     PreteriteCard(String verb, String subject) {
         super(verb, subject);
-    }
+    } //end of constructor
 
     /**
      * a method to conjugate the verb
@@ -25,7 +28,7 @@ public class PreteriteCard extends FlashCard {
         else {
             throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
         } //end of else
-    }
+    } //end of conjugateVerb method
 
     /**
      * a method to check if the verb given is irregular
@@ -35,7 +38,7 @@ public class PreteriteCard extends FlashCard {
     @Override
     protected boolean checkIrreg() {
         return false;
-    }
+    } //end of checkIrreg method
 
     /**
      * a method to conjugate irregular verbs
@@ -45,7 +48,7 @@ public class PreteriteCard extends FlashCard {
     @Override
     protected String conjugateIrreg() {
         return null;
-    }
+    } //end of conjugateIrreg method
 
     /**
      * a method to add the correct preterite endings to a dictionary
@@ -68,5 +71,4 @@ public class PreteriteCard extends FlashCard {
         conjugations.add("nosotros", "imos");
         conjugations.add("ustedes", "ieron");
     } //end of addPreteriteErIr method
-
-}
+} //end of PreteriteCard class
