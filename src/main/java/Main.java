@@ -8,12 +8,11 @@ public class Main {
     public static void main(String[] args) {
 
         String verbFile = "Verbs.txt";
-        FlashCard test = new FlashCard();
         ArrayList<String> verbs = new ArrayList<>();
 
         try{
             Scanner data = new Scanner(new File(verbFile));
-            verbs = test.readFile(data);
+            verbs = FlashCard.readFile(data);
         } //end of try
         catch(FileNotFoundException e){
             System.out.println("File not found: " + e.getMessage());
@@ -35,24 +34,28 @@ public class Main {
             verbTense = "imperfect";
         }
 
-        int subject = (int)((Math.random() * 4) + 1);
+        int subject = (int)((Math.random() * 5));
         String subjectVerb = "";
         if(subject == 0){
             subjectVerb = "yo";
         }
-        else if(tense == 1){
+        else if(subject == 1){
             subjectVerb = "tu";
         }
-        else if(tense == 2){
+        else if(subject == 2){
             subjectVerb = "usted";
         }
-        else if(tense == 3){
+        else if(subject == 3){
             subjectVerb = "nosotros";
         }
-        else if(tense == 4){
+        else if(subject == 4){
             subjectVerb = "ustedes";
         }
-        System.out.println(test.conjugateVerb((String)verbs.get(index), subjectVerb, verbTense));
+
+        FlashCard test = FlashCard.getCard(verbs.get(index), subjectVerb, verbTense);
+        System.out.println(verbTense);
+        System.out.println(subjectVerb);
+        System.out.println(test.getAnswer());
     }
 
 }

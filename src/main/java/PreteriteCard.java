@@ -1,0 +1,72 @@
+public class PreteriteCard extends FlashCard {
+
+    PreteriteCard(String verb, String subject) {
+        super(verb, subject);
+    }
+
+    /**
+     * a method to conjugate the verb
+     *
+     * @return string the conjugated verb
+     */
+    @Override
+    public void conjugateVerb() {
+        String ending = findEnding();
+        String stem = verb.substring(0, verb.length() - 2);
+
+        if (ending.equals("ar")) {
+            addPreteriteAr();
+            answer = stem + conjugations.getValue(subject);
+        } //end of if
+        else if (ending.equals("er") || ending.equals("ir")) {
+            addPreteriteErIr();
+            answer = stem + conjugations.getValue(subject);
+        } //end of if
+        else {
+            throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
+        } //end of else
+    }
+
+    /**
+     * a method to check if the verb given is irregular
+     *
+     * @return true if it is irregular, false if not
+     */
+    @Override
+    protected boolean checkIrreg() {
+        return false;
+    }
+
+    /**
+     * a method to conjugate irregular verbs
+     *
+     * @return the conjugated irregular verb
+     */
+    @Override
+    protected String conjugateIrreg() {
+        return null;
+    }
+
+    /**
+     * a method to add the correct preterite endings to a dictionary
+     */
+    private void addPreteriteAr() {
+        conjugations.add("yo", "e");
+        conjugations.add("tu", "aste");
+        conjugations.add("usted", "o");
+        conjugations.add("nosotros", "amos");
+        conjugations.add("ustedes", "aron");
+    } //end of addPreteriteAr method
+
+    /**
+     * a method to add the correct preterite endings to a dictionary
+     */
+    private void addPreteriteErIr() {
+        conjugations.add("yo", "i");
+        conjugations.add("tu", "iste");
+        conjugations.add("usted", "io");
+        conjugations.add("nosotros", "imos");
+        conjugations.add("ustedes", "ieron");
+    } //end of addPreteriteErIr method
+
+}
