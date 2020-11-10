@@ -4,7 +4,7 @@
  * @param <K>: the abstract key of our dictionary
  * @param <V>: the abstract value of our dictionary
  */
-public class VerbDictionary<K, V> {
+public class VerbDictionary<K, V> implements DictionaryInterface<K, V> {
 
     private Entry<K, V>[] dictionary;
     private static final int CAPACITY = 5;
