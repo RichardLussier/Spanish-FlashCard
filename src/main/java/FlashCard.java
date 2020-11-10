@@ -68,7 +68,7 @@ public abstract class FlashCard {
      *
      * @return the conjugated irregular verb
      */
-    protected abstract String conjugateIrreg();
+    protected abstract void conjugateIrreg();
 
     /**
      * an array list of verbs to be used
