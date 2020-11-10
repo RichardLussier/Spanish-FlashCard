@@ -73,7 +73,7 @@ public class PresentCard extends FlashCard {
      * @return the conjugated irregular verb
      */
     @Override
-    protected String conjugateIrreg() {
-        return null;
+    protected void conjugateIrreg() {
+
     } //end of conjugateIrreg method
 } //end of PresentCard class

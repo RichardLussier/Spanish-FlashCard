@@ -16,10 +16,12 @@ public class ImperfectCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
         String stem = verb.substring(0, verb.length() - 2);
-        if (ending.equals("ar")) {
+        if (checkIrreg())
+            conjugateIrreg();
+        else if (ending.equals("ar")) {
             addImperfectAr();
             answer = stem + conjugations.getValue(subject);
-        } //end of if
+        } //end of else if
         else if (ending.equals("er") || ending.equals("ir")) {
             addImperfectErIr();
             answer = stem + conjugations.getValue(subject);
@@ -59,7 +61,10 @@ public class ImperfectCard extends FlashCard {
      */
     @Override
     protected boolean checkIrreg() {
-        return false;
+        if (verb.equals("ver") || verb.equals("ser") || verb.equals("ir"))
+            return true;
+        else
+            return false;
     } //end of checkIrreg method
 
     /**
@@ -68,7 +73,33 @@ public class ImperfectCard extends FlashCard {
      * @return the conjugated irregular verb
      */
     @Override
-    protected String conjugateIrreg() {
-        return null;
+    protected void conjugateIrreg() {
+        if (verb.equals("ver"))
+        {
+            conjugations.add("yo", "veia");
+            conjugations.add("tu", "veias");
+            conjugations.add("usted", "veia");
+            conjugations.add("nosotros", "veiamos");
+            conjugations.add("ustedes", "veian");
+            answer = conjugations.getValue(subject);
+        } // end if
+        else if (verb.equals("ser"))
+        {
+            conjugations.add("yo", "era");
+            conjugations.add("tu", "eras");
+            conjugations.add("usted", "era");
+            conjugations.add("nosotros", "eramos");
+            conjugations.add("ustedes", "eran");
+            answer = conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("ir"))
+        {
+            conjugations.add("yo", "iba");
+            conjugations.add("tu", "ibas");
+            conjugations.add("usted", "iba");
+            conjugations.add("nosotros", "ibamos");
+            conjugations.add("ustedes", "iban");
+            answer = conjugations.getValue(subject);
+        } // end else if
     } //end of conjugateIrreg method
 } //end of ImperfectCard class

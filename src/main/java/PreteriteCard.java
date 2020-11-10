@@ -17,7 +17,9 @@ public class PreteriteCard extends FlashCard {
         String ending = findEnding();
         String stem = verb.substring(0, verb.length() - 2);
 
-        if (ending.equals("ar")) {
+        if (checkIrreg())
+            conjugateIrreg();
+        else if (ending.equals("ar")) {
             addPreteriteAr();
             answer = stem + conjugations.getValue(subject);
         } //end of if
@@ -46,8 +48,8 @@ public class PreteriteCard extends FlashCard {
      * @return the conjugated irregular verb
      */
     @Override
-    protected String conjugateIrreg() {
-        return null;
+    protected void conjugateIrreg() {
+
     } //end of conjugateIrreg method
 
     /**

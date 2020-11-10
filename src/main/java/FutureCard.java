@@ -16,7 +16,9 @@ public class FutureCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
 
-        if (ending.equals("ar") || ending.equals("er") || ending.equals("ir")) {
+        if (checkIrreg())
+            conjugateIrreg();
+        else if (ending.equals("ar") || ending.equals("er") || ending.equals("ir")) {
             addFutureAll();
             answer = verb + conjugations.getValue(subject);
         } //end of if
@@ -52,7 +54,7 @@ public class FutureCard extends FlashCard {
      * @return the conjugated irregular verb
      */
     @Override
-    protected String conjugateIrreg() {
-        return null;
+    protected void conjugateIrreg() {
+
     } //end of conjugateIrreg method
 } //end of FutureCard method
