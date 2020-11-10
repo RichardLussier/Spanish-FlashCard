@@ -23,15 +23,19 @@ public class VerbDictionary<K, V> {
      * with the new one.
      * @param key: the key we want to add to the dictionary
      * @param value: the value we want to add to the dictionary
+     * @return: the old value of the key, or null if it didn't exist beforehand
      */
-    public void add(K key, V value){
+    public V add(K key, V value){
         checkInitialization();
+        V oldValue = null;
         if(contains(key)){
             int replaceAt = getIndexOf(key);
+            oldValue = dictionary[replaceAt].getValue();
             dictionary[replaceAt].setValue(value);
         } //end of if
         dictionary[numberOFEntries] = new Entry(key, value);
         numberOFEntries++;
+        return oldValue;
     } //end of add method
 
     /**
