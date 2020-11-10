@@ -56,19 +56,16 @@ public abstract class FlashCard {
         return verb.substring(verb.length() - 2);
     } //end of findEnding method
 
-    /**
-     * a method to check if the verb given is irregular
-     *
-     * @return true if it is irregular, false if not
-     */
-    protected abstract boolean checkIrreg();
+    protected String getStem(){
+        return verb.substring(0, verb.length() - 2);
+    }
 
     /**
      * a method to conjugate irregular verbs
      *
      * @return the conjugated irregular verb
      */
-    protected abstract void conjugateIrreg();
+    protected abstract boolean conjugateIrreg();
 
     /**
      * an array list of verbs to be used

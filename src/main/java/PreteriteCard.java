@@ -17,30 +17,20 @@ public class PreteriteCard extends FlashCard {
         String ending = findEnding();
         String stem = verb.substring(0, verb.length() - 2);
 
-        if (checkIrreg())
-            conjugateIrreg();
-        else if (ending.equals("ar")) {
-            addPreteriteAr();
-            answer = stem + conjugations.getValue(subject);
-        } //end of if
-        else if (ending.equals("er") || ending.equals("ir")) {
-            addPreteriteErIr();
-            answer = stem + conjugations.getValue(subject);
-        } //end of if
-        else {
-            throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
-        } //end of else
+        if (!conjugateIrreg()) {
+            if (ending.equals("ar")) {
+                addPreteriteAr();
+                answer = stem + conjugations.getValue(subject);
+            } //end of if
+            else if (ending.equals("er") || ending.equals("ir")) {
+                addPreteriteErIr();
+                answer = stem + conjugations.getValue(subject);
+            } //end of if
+            else {
+                throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
+            } //end of else
+        }
     } //end of conjugateVerb method
-
-    /**
-     * a method to check if the verb given is irregular
-     *
-     * @return true if it is irregular, false if not
-     */
-    @Override
-    protected boolean checkIrreg() {
-        return false;
-    } //end of checkIrreg method
 
     /**
      * a method to conjugate irregular verbs
@@ -48,8 +38,8 @@ public class PreteriteCard extends FlashCard {
      * @return the conjugated irregular verb
      */
     @Override
-    protected void conjugateIrreg() {
-
+    protected boolean conjugateIrreg() {
+        return false;
     } //end of conjugateIrreg method
 
     /**

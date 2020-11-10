@@ -16,19 +16,19 @@ public class ImperfectCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
         String stem = verb.substring(0, verb.length() - 2);
-        if (checkIrreg())
-            conjugateIrreg();
-        else if (ending.equals("ar")) {
-            addImperfectAr();
-            answer = stem + conjugations.getValue(subject);
-        } //end of else if
-        else if (ending.equals("er") || ending.equals("ir")) {
-            addImperfectErIr();
-            answer = stem + conjugations.getValue(subject);
-        } //end of else if
-        else {
-            throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
-        } //end of else
+        if (!conjugateIrreg()) {
+         if (ending.equals("ar")) {
+                addImperfectAr();
+                answer = stem + conjugations.getValue(subject);
+            } //end of else if
+            else if (ending.equals("er") || ending.equals("ir")) {
+                addImperfectErIr();
+                answer = stem + conjugations.getValue(subject);
+            } //end of else if
+            else {
+                throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
+            } //end of else
+        }
     } //end of conjugateVerb method
 
     /**
@@ -55,25 +55,12 @@ public class ImperfectCard extends FlashCard {
 
 
     /**
-     * a method to check if the verb given is irregular
-     *
-     * @return true if it is irregular, false if not
-     */
-    @Override
-    protected boolean checkIrreg() {
-        if (verb.equals("ver") || verb.equals("ser") || verb.equals("ir"))
-            return true;
-        else
-            return false;
-    } //end of checkIrreg method
-
-    /**
      * a method to conjugate irregular verbs
      *
      * @return the conjugated irregular verb
      */
     @Override
-    protected void conjugateIrreg() {
+    protected boolean conjugateIrreg() {
         if (verb.equals("ver"))
         {
             conjugations.add("yo", "veia");
@@ -101,5 +88,7 @@ public class ImperfectCard extends FlashCard {
             conjugations.add("ustedes", "iban");
             answer = conjugations.getValue(subject);
         } // end else if
+        else return false;
+        return true;
     } //end of conjugateIrreg method
 } //end of ImperfectCard class
