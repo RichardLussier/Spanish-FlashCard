@@ -44,8 +44,14 @@ public class FutureCard extends FlashCard {
      * @return true if it is irregular, false if not
      */
     @Override
-    protected boolean checkIrreg() {
-        return false;
+    protected boolean checkIrreg()
+    {
+        if (verb.equals("decir") || verb.equals("haber") || verb.equals("hacer") || verb.equals("poder")
+        || verb.equals("poner") || verb.equals("saber") || verb.equals("salir") || verb.equals("tener")
+        || verb.equals("venir") || verb.equals("querer"))
+            return true;
+        else
+            return false;
     } //end of checkIrreg method
 
     /**
@@ -55,6 +61,56 @@ public class FutureCard extends FlashCard {
      */
     @Override
     protected void conjugateIrreg() {
+        if (verb.equals("decir"))
+        {
+            addFutureAll();
+            answer = "dir" + conjugations.getValue(subject);
+        } // end if
+        else if (verb.equals("haber"))
+        {
+         addFutureAll();
+         answer = "habr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("hacer"))
+        {
+            addFutureAll();
+            answer = "har" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("poder"))
+        {
+            addFutureAll();
+            answer = "podr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("poner"))
+        {
+            addFutureAll();
+            answer = "pondr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("saber"))
+        {
+            addFutureAll();
+            answer = "sabr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("salir"))
+        {
+            addFutureAll();
+            answer = "saldr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("tener"))
+        {
+            addFutureAll();
+            answer = "tendr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("venir"))
+        {
+            addFutureAll();
+            answer = "vendr" + conjugations.getValue(subject);
+        } // end else if
+        else if (verb.equals("querer"))
+        {
+            addFutureAll();
+            answer = "querr" + conjugations.getValue(subject);
+        } // end else if
 
     } //end of conjugateIrreg method
 } //end of FutureCard method
