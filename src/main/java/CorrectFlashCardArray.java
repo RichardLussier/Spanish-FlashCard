@@ -42,7 +42,8 @@ public class CorrectFlashCardArray implements ArrayInterface {
         for(FlashCard card : correctCards){
             sumOfAttempts += card.getAttempts();
         } //end of for
-        return sumOfAttempts;
+        double average = sumOfAttempts / numberOfEntries;
+        return average;
     } //end of calculateAverageAttempts method
 
     /**
