@@ -81,4 +81,12 @@ public class FutureCard extends FlashCard {
         }
         return true;
     } //end of conjugateIrreg method
+
+    /**
+     * This method will return "Future", which is the tense of this card
+     * @return: "Future"
+     */
+    public String getTense(){
+        return "Future";
+    } //end of getTense method
 } //end of FutureCard method

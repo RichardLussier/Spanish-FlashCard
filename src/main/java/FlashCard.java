@@ -86,11 +86,25 @@ public abstract class FlashCard {
         return verbs;
     } //end of readFile method
 
+    /**
+     * This method will return the number of attempts for a certain flashcard
+     * @return: the number of attempts on the current flashcard
+     */
     public int getAttempts() {
         return attempts;
     } //end of getAttempts method
 
+    /**
+     * This method will add one to the number of attempts. Is used when the user
+     * gets the answer wrong.
+     */
     public void incrementAttempts() {
         attempts++;
     } //end of incrementAttempts method
+
+    /**
+     * This method will return the tense of the flashcard
+     * @return: the tense of the flashcard
+     */
+    public abstract String getTense();
 } //end of FlashCard abstract class

@@ -63,4 +63,12 @@ public class PreteriteCard extends FlashCard {
         conjugations.add("nosotros", "imos");
         conjugations.add("ustedes", "ieron");
     } //end of addPreteriteErIr method
+
+    /**
+     * This method will return "Preterite", which is the tense of this card
+     * @return: "Preterite"
+     */
+    public String getTense(){
+        return "Preterite";
+    } //end of getTense method
 } //end of PreteriteCard class
