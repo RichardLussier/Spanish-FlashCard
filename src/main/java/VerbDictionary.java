@@ -7,7 +7,7 @@
 public class VerbDictionary<K, V> implements DictionaryInterface<K, V> {
 
     private Entry<K, V>[] dictionary;
-    private static final int CAPACITY = 5;
+    private static final int CAPACITY = 30;
     private int numberOFEntries;
     boolean integrityOK;
 
