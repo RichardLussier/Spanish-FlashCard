@@ -198,16 +198,27 @@ public class PresentCard extends FlashCard {
         return verb.substring(0, verb.length() - 3);
     }
 
+    /**
+     * This method checks if a verb is an irregular stem changing verb
+     * and returns the correct stem for conjugation
+     * @return the stem for conjugation
+     */
     @Override
     protected String getStem(){
-        if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir", "cerregir", "vestir", "freír", "gemir", "repetir").contains(verb))
-            return super.getStem().replaceAll("e", "i");
-        if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener", "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender", "negar", "sentir", "querer").contains(verb))
+        if (subject.toLowerCase().equals("nosotros"))
+            return super.getStem(); // end if
+        if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
+                "cerregir", "vestir", "freír", "gemir", "repetir").contains(verb))
+            return super.getStem().replaceAll("e", "i"); // end if
+        if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener",
+                "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender",
+                "negar", "sentir", "querer").contains(verb)) // end if
             return super.getStem().replaceAll("e", "ie");
-        if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar", "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb))
+        if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar",
+                "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb))
             return verb.equals("jugar") ? "jueg" : super.getStem().replaceAll("o", "ue");
-        return super.getStem();
-    }
+        return super.getStem(); // end if
+    } // end getStem
 
     /**
      * This method will return "Present", which is the tense of this card
