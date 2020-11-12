@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * This class holds the methods needed to create a flashcard in the present tense
  */
@@ -15,7 +17,7 @@ public class PresentCard extends FlashCard {
     @Override
     public void conjugateVerb() {
         String ending = findEnding();
-        String stem = verb.substring(0, verb.length() - 2);
+        String stem = getStem();
         if (!conjugateIrreg()) {
             if (ending.equals("ar")) {
                 addPresentAr();
@@ -194,6 +196,17 @@ public class PresentCard extends FlashCard {
      */
     private String threeLetterStem() {
         return verb.substring(0, verb.length() - 3);
+    }
+
+    @Override
+    protected String getStem(){
+        if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir", "cerregir", "vestir", "freír", "gemir", "repetir").contains(verb))
+            return super.getStem().replaceAll("e", "i");
+        if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener", "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender", "negar", "sentir", "querer").contains(verb))
+            return super.getStem().replaceAll("e", "ie");
+        if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar", "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb))
+            return verb.equals("jugar") ? "jueg" : super.getStem().replaceAll("o", "ue");
+        return super.getStem();
     }
 
     /**
