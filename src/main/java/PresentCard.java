@@ -85,6 +85,12 @@ public class PresentCard extends FlashCard {
         return true;
     } //end of checkIrreg method]
 
+    /**
+     * This method is used to conjugate irregular verbs
+     * that are irregular in only the "yo" form
+     * @return true if the verb was conjugated
+     * false if otherwise
+     */
     private boolean yoChange() {
         if (subject.equals("yo")) {
             VerbDictionary<String, String> yoChange = new VerbDictionary<>();
@@ -105,11 +111,16 @@ public class PresentCard extends FlashCard {
             if (yoChange.getValue(verb) != null) {
                 answer = yoChange.getValue(verb);
                 return true;
-            }
-        }
+            } // end if
+        } // end if
         return false;
-    }
+    } // end of yoChange
 
+    /**
+     * This method is used to conjugate irregular stem-changing verbs
+     * @return true if the verb has been conjugated
+     * false if otherwise
+     */
     private boolean conjugateStemIrreg() {
         switch (verb) {
             case "haber":
@@ -162,16 +173,35 @@ public class PresentCard extends FlashCard {
                 break;
             default:
                 return false;
-        }
+        } // end switch
         return true;
-    }
+    } // end conjugateStemIrreg
 
 
+    /**
+     * This method is used to get the three letter ending
+     * of a verb
+     * @return the last three letters of a verb
+     */
     private String threeLetterEnding() {
         return verb.substring(verb.length() - 3);
     }
 
+    /**
+     * This method is used to get the stem of a verb with a
+     * three letter ending
+     * @return the stem of the verb
+     */
     private String threeLetterStem() {
         return verb.substring(0, verb.length() - 3);
     }
+
+    /**
+     * This method will return "Present", which is the tense of this card
+     * @return: "Present"
+     */
+    public String getTense(){
+        return "Present";
+    } //end of getTense method
+
 } //end of PresentCard class
