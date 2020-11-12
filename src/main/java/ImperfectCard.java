@@ -10,7 +10,6 @@ public class ImperfectCard extends FlashCard {
     /**
      * a method to conjugate the verb
      *
-     * @return string the conjugated verb
      */
     @Override
     public void conjugateVerb() {
@@ -57,7 +56,8 @@ public class ImperfectCard extends FlashCard {
     /**
      * a method to conjugate irregular verbs
      *
-     * @return the conjugated irregular verb
+     * @return true if the verb has been conjugated
+     * false if otherwise
      */
     @Override
     protected boolean conjugateIrreg() {
@@ -91,4 +91,12 @@ public class ImperfectCard extends FlashCard {
         else return false;
         return true;
     } //end of conjugateIrreg method
+
+    /**
+     * This method will return "Imperfect", which is the tense of this card
+     * @return: "Imperfect"
+     */
+    public String getTense(){
+        return "Imperfect";
+    } //end of getTense method
 } //end of ImperfectCard class

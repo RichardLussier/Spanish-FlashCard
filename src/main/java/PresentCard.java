@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * This class holds the methods needed to create a flashcard in the present tense
  */
@@ -17,7 +15,7 @@ public class PresentCard extends FlashCard {
     @Override
     public void conjugateVerb() {
         String ending = findEnding();
-        String stem = getStem();
+        String stem = verb.substring(0, verb.length() - 2);
         if (!conjugateIrreg()) {
             if (ending.equals("ar")) {
                 addPresentAr();
@@ -87,6 +85,12 @@ public class PresentCard extends FlashCard {
         return true;
     } //end of checkIrreg method]
 
+    /**
+     * This method is used to conjugate irregular verbs
+     * that are irregular in only the "yo" form
+     * @return true if the verb was conjugated
+     * false if otherwise
+     */
     private boolean yoChange() {
         if (subject.equals("yo")) {
             VerbDictionary<String, String> yoChange = new VerbDictionary<>();
@@ -107,11 +111,16 @@ public class PresentCard extends FlashCard {
             if (yoChange.getValue(verb) != null) {
                 answer = yoChange.getValue(verb);
                 return true;
-            }
-        }
+            } // end if
+        } // end if
         return false;
-    }
+    } // end of yoChange
 
+    /**
+     * This method is used to conjugate irregular stem-changing verbs
+     * @return true if the verb has been conjugated
+     * false if otherwise
+     */
     private boolean conjugateStemIrreg() {
         switch (verb) {
             case "haber":
@@ -164,28 +173,35 @@ public class PresentCard extends FlashCard {
                 break;
             default:
                 return false;
-        }
+        } // end switch
         return true;
-    }
+    } // end conjugateStemIrreg
 
 
+    /**
+     * This method is used to get the three letter ending
+     * of a verb
+     * @return the last three letters of a verb
+     */
     private String threeLetterEnding() {
         return verb.substring(verb.length() - 3);
     }
 
+    /**
+     * This method is used to get the stem of a verb with a
+     * three letter ending
+     * @return the stem of the verb
+     */
     private String threeLetterStem() {
         return verb.substring(0, verb.length() - 3);
     }
 
-    @Override
-    protected String getStem(){
-        String stem = verb.substring(0, verb.length() - 2);
-        if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener", "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender", "negar", "sentir", "querer").contains(stem))
-            return stem.replaceAll("e", "ie"); //Replace e with ie
-        if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir", "cerregir", "vestir", "freír", "gemir", "repetir").contains(stem))
-            return stem.replaceAll("e", "i"); //Replace e with i
-        if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar", "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(stem))
-            return stem.equals("jug") ? "jueg" : stem.replaceAll("o", "ue");
-        return stem;
-    }
+    /**
+     * This method will return "Present", which is the tense of this card
+     * @return: "Present"
+     */
+    public String getTense(){
+        return "Present";
+    } //end of getTense method
+
 } //end of PresentCard class

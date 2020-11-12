@@ -10,7 +10,6 @@ public class FutureCard extends FlashCard {
     /**
      * a method to conjugate the verb
      *
-     * @return string the conjugated verb
      */
     @Override
     public void conjugateVerb() {
@@ -40,7 +39,8 @@ public class FutureCard extends FlashCard {
     /**
      * a method to conjugate irregular verbs
      *
-     * @return the conjugated irregular verb
+     * @return true if the verb has been conjugated
+     * false if otherwise
      */
     @Override
     protected boolean conjugateIrreg() {
@@ -81,4 +81,12 @@ public class FutureCard extends FlashCard {
         }
         return true;
     } //end of conjugateIrreg method
+
+    /**
+     * This method will return "Future", which is the tense of this card
+     * @return: "Future"
+     */
+    public String getTense(){
+        return "Future";
+    } //end of getTense method
 } //end of FutureCard method
