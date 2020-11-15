@@ -79,10 +79,10 @@ public class PresentCard extends FlashCard {
             answer = getStem() + "y" + conjugations.getValue(subject);
         } else if (threeLetterEnding().equals("uar") && !subject.equals("nosotros")) {
             addPresentAr();
-            answer = threeLetterStem() + "ú" + conjugations.getValue(subject);
+            answer = threeLetterStem() + "u" + conjugations.getValue(subject);
         } else if (threeLetterEnding().equals("iar") && !subject.equals("nosotros")) {
             addPresentAr();
-            answer = threeLetterStem() + "í" + conjugations.getValue(subject);
+            answer = threeLetterStem() + "i" + conjugations.getValue(subject);
         } else return false;
         return true;
     } //end of checkIrreg method]
@@ -135,8 +135,8 @@ public class PresentCard extends FlashCard {
                 break;
             case "estar":
                 conjugations.add("yo", "estoy");
-                conjugations.add("tu", "estás");
-                conjugations.add("usted", "está");
+                conjugations.add("tu", "estas");
+                conjugations.add("usted", "esta");
                 conjugations.add("nosotros", "estamos");
                 conjugations.add("ustedes", "estan");
                 answer = conjugations.getValue(subject);
@@ -161,16 +161,16 @@ public class PresentCard extends FlashCard {
                 conjugations.add("yo", "oigo");
                 conjugations.add("tu", "oyes");
                 conjugations.add("usted", "oye");
-                conjugations.add("nosotros", "oímos");
+                conjugations.add("nosotros", "oimos");
                 conjugations.add("ustedes", "oyen");
                 answer = conjugations.getValue(subject);
                 break;
             case "reir":
-                conjugations.add("yo", "rió");
-                conjugations.add("tu", "ríes");
-                conjugations.add("usted", "ríe");
-                conjugations.add("nosotros", "reímos");
-                conjugations.add("ustedes", "ríen");
+                conjugations.add("yo", "rio");
+                conjugations.add("tu", "ries");
+                conjugations.add("usted", "rie");
+                conjugations.add("nosotros", "reimos");
+                conjugations.add("ustedes", "rien");
                 answer = conjugations.getValue(subject);
                 break;
             default:
