@@ -1,3 +1,5 @@
+import java.util.Queue;
+
 /**
  * This class will holds the methods needed for our queue, which will
  * hold all of the unanswered flashcards.
@@ -7,6 +9,11 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
 
     private Node firstNode;
     private Node lastNode;
+
+    public QueueForFlashCards(){
+        firstNode = null;
+        lastNode = null;
+    } //end of constructor
 
     /**
      * This method adds a given entry to the end of the queue
@@ -55,6 +62,20 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
     public boolean isEmpty() {
         return (firstNode == null) && (lastNode == null);
     } //end of isEmpty method
+
+    /**
+     * This method gets the size of our queue
+     * @return: the size of the queue
+     */
+    public int getSize(){
+        int size = 0;
+        Node currentNode = firstNode;
+        while(currentNode != null){
+            size++;
+            currentNode = currentNode.getNextNode();
+        } //end of while
+        return size;
+    } //end of getSize method
 
     /**
      * This inner class is what we use to construct our nodes

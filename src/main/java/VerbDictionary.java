@@ -39,6 +39,18 @@ public class VerbDictionary<K, V> implements DictionaryInterface<K, V> {
     } //end of add method
 
     /**
+     * This method returns the size of the dictionary
+     * @return: the size of the dictionary
+     */
+    public int getSize(){
+        return numberOFEntries;
+    } //end of getSize method
+
+    public K getKey(int index){
+        return dictionary[index].getKey();
+    } //end of getKey method
+
+    /**
      * This method takes a key and returns whether the key exists in the dictionary
      * @param key: the key we want to search for
      * @return: true if the key is inside of the dictionary, false otherwise
