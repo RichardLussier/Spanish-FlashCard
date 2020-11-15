@@ -32,9 +32,12 @@ public class VerbDictionary<K, V> implements DictionaryInterface<K, V> {
             int replaceAt = getIndexOf(key);
             oldValue = dictionary[replaceAt].getValue();
             dictionary[replaceAt].setValue(value);
+            dictionary[numberOFEntries] = new Entry(key, value);
         } //end of if
-        dictionary[numberOFEntries] = new Entry(key, value);
-        numberOFEntries++;
+        else{
+            dictionary[numberOFEntries] = new Entry(key, value);
+            numberOFEntries++;
+        } //end of else
         return oldValue;
     } //end of add method
 

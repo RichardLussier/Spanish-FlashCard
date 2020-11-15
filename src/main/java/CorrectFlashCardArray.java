@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 /**
  * This class holds the methods that allow us to operate the array
  * which holds the flashcards that the user has gotten correct.
@@ -29,6 +31,7 @@ public class CorrectFlashCardArray implements ArrayInterface {
         checkInitialization();
         checkCapacity();
         correctCards[numberOfEntries] = newEntry;
+        numberOfEntries++;
         return newEntry;
     } //end of add method
 
@@ -42,8 +45,8 @@ public class CorrectFlashCardArray implements ArrayInterface {
         for(FlashCard card : correctCards){
             sumOfAttempts += card.getAttempts();
         } //end of for
-        double average = sumOfAttempts / numberOfEntries;
-        return average;
+        double average = (double)sumOfAttempts / (double)numberOfEntries;
+        return roundTo(average, 2);
     } //end of calculateAverageAttempts method
 
     /**
@@ -63,4 +66,9 @@ public class CorrectFlashCardArray implements ArrayInterface {
             throw new SecurityException("The array was filled.");
         } //end of if
     } //end of checkCapacity method
+
+    private double roundTo(double value, int places){
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    } //end of roundTo method
 } //end of CorrectFlashCardArray class

@@ -13,6 +13,7 @@ public class StudyGame {
     static QueueForFlashCards<FlashCard> studyCards;
     static CorrectFlashCardArray correctCards;
     static ArrayList<String> verbs = new ArrayList<>();
+    private static final int DICTIONARY_SIZE = 5;
 
     public StudyGame(){
         fillVerbs();
@@ -72,8 +73,26 @@ public class StudyGame {
     public static void fillQueue(int numberToFill, String tense){
         while(numberToFill != 0){
             int randomVerb = (int)(Math.random() * verbs.size());
-            int randomSubject = (int)(Math.random() * subjectDict.getSize());
-            FlashCard newCard = FlashCard.getCard(verbs.get(randomVerb), subjectDict.getKey(randomSubject), tense);
+            int randomSubject = (int)(Math.random() * DICTIONARY_SIZE);
+            String subject = "";
+            switch(randomSubject){
+                case 0:
+                    subject = "yo";
+                    break;
+                case 1:
+                    subject = "tu";
+                    break;
+                case 2:
+                    subject = "usted";
+                    break;
+                case 3:
+                    subject = "nosotros";
+                    break;
+                case 4:
+                    subject = "ustedes";
+                    break;
+            } //end of switch
+            FlashCard newCard = FlashCard.getCard(verbs.get(randomVerb), subject, tense);
             studyCards.enqueue(newCard);
             numberToFill--;
         } //end of while
@@ -90,8 +109,8 @@ public class StudyGame {
             FlashCard currentCard = studyCards.dequeue();
             System.out.print("(" + currentCard.getTense() + "): " + currentCard.verb + ", " + currentCard.subject + ": ");
             currentCard.incrementAttempts();
-            String userInput = userAnswer.nextLine();
-            if(userInput.toLowerCase().equals(currentCard.answer)){
+            String userInput = userAnswer.next();
+            if(userInput.toLowerCase().equals(currentCard.answer.toLowerCase())){
                 System.out.println("Correct!");
                 correctCards.add(currentCard);
             } //end of if
@@ -104,12 +123,16 @@ public class StudyGame {
     } //end of showFlashCard method
 
     public static void instructionsMessage(){
-        System.out.println("You will be presented with a tense, verb, and subject. You will then input your" +
-                "answer. You will be notified whether it is correct or incorrect. Once you finish all of the flashcards, " +
+        System.out.println("You will be presented with a tense, verb, and subject. You will then input your " +
+                "answer. You will be notified whether it is correct or incorrect.\nOnce you finish all of the flashcards, " +
                 "you will be presented with some statistics about your session. (Note: capitalization won't matter)\n");
     } //end of startGame method
 
     public static void endStatistics(){
-        System.out.println("You averaged " + correctCards.calculateAverageAttempts() + " attempts per flashcard.");
+        double average = correctCards.calculateAverageAttempts();
+        if(average == 1)
+            System.out.println("You averaged " + average + " attempt per flashcard.");
+        else
+            System.out.println("You averaged " + average + " attempts per flashcard.");
     } //end of endStatistics method
 } //end of StudyGame class

@@ -66,6 +66,7 @@ public class PresentCard extends FlashCard {
      */
     @Override
     protected boolean conjugateIrreg() {
+        System.out.println(conjugateStemIrreg() + " " + yoChange());
         if (conjugateStemIrreg() || yoChange());
         else if (threeLetterEnding().equals("cer") || threeLetterEnding().equals("cir")) {
             conjugations.add("yo", "zco");
@@ -124,7 +125,7 @@ public class PresentCard extends FlashCard {
      * false if otherwise
      */
     private boolean conjugateStemIrreg() {
-        switch (verb) {
+        switch (verb.toLowerCase()) {
             case "haber":
                 conjugations.add("yo", "he");
                 conjugations.add("tu", "has");
