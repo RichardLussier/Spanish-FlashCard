@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,10 +9,32 @@ import java.util.Scanner;
 public class StudyGame {
 
     static Scanner userAnswer = new Scanner(System.in);
-    static VerbDictionary<String, String> subjectDict = new VerbDictionary<>();
-    static QueueForFlashCards<FlashCard> studyCards = new QueueForFlashCards<>();
-    static CorrectFlashCardArray correctCards = new CorrectFlashCardArray(studyCards.getSize());
-    static ArrayList<String> verbs = FlashCard.readFile(userAnswer);
+    static VerbDictionary<String, String> subjectDict;
+    static QueueForFlashCards<FlashCard> studyCards;
+    static CorrectFlashCardArray correctCards;
+    static ArrayList<String> verbs = new ArrayList<>();
+
+    public StudyGame(){
+        fillVerbs();
+        subjectDict = new VerbDictionary<>();
+        studyCards = new QueueForFlashCards<>();
+        askForTense();
+        correctCards = new CorrectFlashCardArray(studyCards.getSize());
+        playGame();
+    } //end of constructor
+
+    public void fillVerbs(){
+        String verbFile = "Verbs.txt";
+
+        try{
+            Scanner data = new Scanner(new File(verbFile));
+            verbs = FlashCard.readFile(data);
+        } //end of try
+        catch(
+                FileNotFoundException e){
+            System.out.println("File not found: " + e.getMessage());
+        } //end of catch
+    } //end of fillVerbs method
 
     /**
      * This method will ask for the tenses the user wants to use and will then fill the queue

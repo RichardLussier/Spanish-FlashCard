@@ -1,6 +1,7 @@
 public class Client {
 
     public static void main(String[] args) {
-        StudyGame.instructionsMessage();
+        System.out.println("yfjfxnf");
+        StudyGame test = new StudyGame();
     }
 }

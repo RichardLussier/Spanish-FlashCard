@@ -9,10 +9,12 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
 
     private Node firstNode;
     private Node lastNode;
+    private int numberOfEntries;
 
     public QueueForFlashCards(){
         firstNode = null;
         lastNode = null;
+        numberOfEntries = 0;
     } //end of constructor
 
     /**
@@ -28,6 +30,7 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
             firstNode = newNode;
         } //end of else
         lastNode = newNode;
+        numberOfEntries++;
     } //end of enqueue method
 
     /**
@@ -35,12 +38,16 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
      * @return: the item that we are removing from the queue
      */
     public T dequeue() {
+        if(numberOfEntries == 0){
+            throw new IllegalStateException("The queue is empty");
+        } //end of if
         T removed = firstNode.getData();
         firstNode.setData(null);
         firstNode = firstNode.getNextNode();
         if(firstNode == null){
             lastNode = null;
         } //end of if
+        numberOfEntries--;
         return removed;
     } //end of dequeue method
 
@@ -68,13 +75,7 @@ public class QueueForFlashCards<T> implements QueueInterface<T> {
      * @return: the size of the queue
      */
     public int getSize(){
-        int size = 0;
-        Node currentNode = firstNode;
-        while(currentNode != null){
-            size++;
-            currentNode = currentNode.getNextNode();
-        } //end of while
-        return size;
+        return numberOfEntries;
     } //end of getSize method
 
     /**
