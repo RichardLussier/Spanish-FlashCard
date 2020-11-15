@@ -23,34 +23,34 @@ public class Main {
         int tense = (int)((Math.random() * 4));
         if(tense == 0){
             verbTense = "present";
-        }
+        } //end of if
         else if(tense == 1){
             verbTense = "future";
-        }
+        } //end of else if
         else if(tense == 2){
             verbTense = "preterite";
-        }
+        } //end of else if
         else if(tense == 3){
             verbTense = "imperfect";
-        }
+        } //end of else if
 
         int subject = (int)((Math.random() * 5));
         String subjectVerb = "";
         if(subject == 0){
             subjectVerb = "yo";
-        }
+        } //end of if
         else if(subject == 1){
             subjectVerb = "tu";
-        }
+        } //end of else if
         else if(subject == 2){
             subjectVerb = "usted";
-        }
+        } //end of else if
         else if(subject == 3){
             subjectVerb = "nosotros";
-        }
+        } //end of else if
         else if(subject == 4){
             subjectVerb = "ustedes";
-        }
+        } //end of else if
 
         FlashCard test = FlashCard.getCard(verbs.get(index), subjectVerb, verbTense);
         System.out.println(verbTense);
