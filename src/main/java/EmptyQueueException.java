@@ -1,3 +1,6 @@
+/**
+ * This class makes a custom error message, which will be used if the queue is empty
+ */
 public final class EmptyQueueException extends RuntimeException {
 
     /**

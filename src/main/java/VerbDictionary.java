@@ -77,6 +77,9 @@ public class VerbDictionary<K, V> implements DictionaryInterface<K, V> {
         return -1;
     } //end of getIndexOf method
 
+    /**
+     * This methods checks to make sure everything is initialized properly
+     */
     private void checkInitialization(){
         if(!integrityOK){
             throw new SecurityException("The dictionary has not been initialized");

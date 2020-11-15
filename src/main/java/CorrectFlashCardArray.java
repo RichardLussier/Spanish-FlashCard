@@ -1,5 +1,3 @@
-import java.math.BigDecimal;
-
 /**
  * This class holds the methods that allow us to operate the array
  * which holds the flashcards that the user has gotten correct.
@@ -67,6 +65,12 @@ public class CorrectFlashCardArray implements ArrayInterface {
         } //end of if
     } //end of checkCapacity method
 
+    /**
+     * This method rounds the given number to the given number of places
+     * @param value: the value we want to round
+     * @param places: the number of places we want to round to
+     * @return: the rounded number
+     */
     private double roundTo(double value, int places){
         double scale = Math.pow(10, places);
         return Math.round(value * scale) / scale;

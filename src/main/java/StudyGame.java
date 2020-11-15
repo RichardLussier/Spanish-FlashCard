@@ -24,6 +24,9 @@ public class StudyGame {
         playGame();
     } //end of constructor
 
+    /**
+     * This method fills the verbs array with the verbs in the text file
+     */
     public void fillVerbs(){
         String verbFile = "Verbs.txt";
 
@@ -122,12 +125,18 @@ public class StudyGame {
         endStatistics();
     } //end of showFlashCard method
 
+    /**
+     * This method shows the instruction message upon starting the game
+     */
     public static void instructionsMessage(){
         System.out.println("You will be presented with a tense, verb, and subject. You will then input your " +
                 "answer. You will be notified whether it is correct or incorrect.\nOnce you finish all of the flashcards, " +
                 "you will be presented with some statistics about your session. (Note: capitalization won't matter)\n");
     } //end of startGame method
 
+    /**
+     * This method shows the user their average number of attempts
+     */
     public static void endStatistics(){
         double average = correctCards.calculateAverageAttempts();
         if(average == 1)

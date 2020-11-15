@@ -1,5 +1,3 @@
-import java.util.Queue;
-
 /**
  * This class will holds the methods needed for our queue, which will
  * hold all of the unanswered flashcards.

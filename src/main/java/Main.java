@@ -56,6 +56,5 @@ public class Main {
         System.out.println(verbTense);
         System.out.println(subjectVerb);
         System.out.println(test.getAnswer());
-    }
-
-}
+    } //end of main method
+} //end of Main class

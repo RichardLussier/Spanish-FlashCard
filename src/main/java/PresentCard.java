@@ -111,8 +111,8 @@ public class PresentCard extends FlashCard {
             yoChange.add("caber", "caigo");
             yoChange.add("oir", "oigo");
             yoChange.add("gir", "jo");
-            if (yoChange.getValue(verb) != null) {
-                answer = yoChange.getValue(verb);
+            if (yoChange.getValue(verb.toLowerCase()) != null) {
+                answer = yoChange.getValue(verb.toLowerCase());
                 return true;
             } // end if
         } // end if
@@ -188,7 +188,7 @@ public class PresentCard extends FlashCard {
      */
     private String threeLetterEnding() {
         return verb.substring(verb.length() - 3);
-    }
+    } //end of threeLetterEnding method
 
     /**
      * This method is used to get the stem of a verb with a
@@ -197,7 +197,7 @@ public class PresentCard extends FlashCard {
      */
     private String threeLetterStem() {
         return verb.substring(0, verb.length() - 3);
-    }
+    } //end of threeLetterStem method
 
     /**
      * This method checks if a verb is an irregular stem changing verb

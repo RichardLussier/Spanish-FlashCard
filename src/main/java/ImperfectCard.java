@@ -27,7 +27,7 @@ public class ImperfectCard extends FlashCard {
             else {
                 throw new IllegalArgumentException(verb + " doesn't end of ar, er, or ir.");
             } //end of else
-        }
+        } //end of if
     } //end of conjugateVerb method
 
     /**

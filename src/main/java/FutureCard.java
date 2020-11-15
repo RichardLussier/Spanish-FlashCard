@@ -78,7 +78,7 @@ public class FutureCard extends FlashCard {
                 break;
             default:
                 return false;
-        }
+        } //end of switch
         return true;
     } //end of conjugateIrreg method
 

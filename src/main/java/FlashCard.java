@@ -58,7 +58,7 @@ public abstract class FlashCard {
 
     protected String getStem(){
         return verb.substring(0, verb.length() - 2);
-    }
+    } //end of getStem method
 
     /**
      * a method to conjugate irregular verbs
