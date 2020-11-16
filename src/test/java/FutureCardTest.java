@@ -13,7 +13,7 @@ class FutureCardTest {
 
     @Test
     void conjugateVerbTest() {
-        test.conjugateVerb();
+        test.conjugateVerb(); // tests the conjugateIrreg method as well
         assertEquals("habras", test.answer);
         test1.conjugateVerb();
         assertEquals("estare", test1.answer);
