@@ -216,8 +216,10 @@ public class PresentCard extends FlashCard {
                 "negar", "sentir", "querer").contains(verb)) // end if
             return super.getStem().replaceAll("e", "ie");
         if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar",
-                "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb))
-            return verb.equals("jugar") ? "jueg" : super.getStem().replaceAll("o", "ue");
+                "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb)) {
+            if (verb.equals("jugar")) return "jueg";
+            return super.getStem().replaceAll("o", "ue");
+        }
         return super.getStem(); // end if
     } // end getStem
 
