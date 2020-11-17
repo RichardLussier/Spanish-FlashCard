@@ -69,8 +69,8 @@ public class PresentCard extends FlashCard {
         if (conjugateStemIrreg() || yoChange());
         else if (threeLetterEnding().equals("cer") || threeLetterEnding().equals("cir")) {
             conjugations.add("yo", "zco");
-            conjugations.add("tu", "ce");
-            conjugations.add("usted", "ces");
+            conjugations.add("tu", "ces");
+            conjugations.add("usted", "ce");
             conjugations.add("nosotros", "cemos");
             conjugations.add("ustedes", "cen");
             answer = threeLetterStem() + conjugations.getValue(subject);
