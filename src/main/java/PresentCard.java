@@ -105,7 +105,7 @@ public class PresentCard extends FlashCard {
             yoChange.add("caer", "caigo");
             yoChange.add("valer", "valgo");
             yoChange.add("venir", "vengo");
-            yoChange.add("saber", "sé");
+            yoChange.add("saber", "se");
             yoChange.add("poner", "pongo");
             yoChange.add("dar", "doy");
             yoChange.add("caber", "caigo");
@@ -209,7 +209,7 @@ public class PresentCard extends FlashCard {
         if (subject.toLowerCase().equals("nosotros"))
             return super.getStem(); // end if
         if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
-                "cerregir", "vestir", "freír", "gemir", "repetir").contains(verb))
+                "cerregir", "vestir", "freir", "gemir", "repetir").contains(verb))
             return super.getStem().replaceAll("e", "i"); // end if
         if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener",
                 "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender",
