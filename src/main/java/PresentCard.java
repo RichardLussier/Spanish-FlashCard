@@ -209,7 +209,7 @@ public class PresentCard extends FlashCard {
         if (subject.toLowerCase().equals("nosotros"))
             return super.getStem(); // end if
         if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
-                "cerregir", "vestir", "freír", "gemir", "repetir").contains(verb))
+                "cerregir", "vestir", "freir", "gemir", "repetir").contains(verb))
             return super.getStem().replaceAll("e", "i"); // end if
         if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener",
                 "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender",
@@ -217,7 +217,7 @@ public class PresentCard extends FlashCard {
             return super.getStem().replaceAll("e", "ie");
         if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar",
                 "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb))
-            return verb.equals("jugar") ? "jueg" : super.getStem().replaceAll("o", "ue");
+            return super.getStem().replaceAll("o", "ue");
         return super.getStem(); // end if
     } // end getStem
 
