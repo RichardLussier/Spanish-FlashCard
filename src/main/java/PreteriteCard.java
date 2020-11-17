@@ -109,7 +109,7 @@ public class PreteriteCard extends FlashCard {
      * false if otherwise
      */
     private boolean conjugateStemIrreg() {
-        switch (verb) {
+        switch (verb.toLowerCase()) {
             case "ir": //ir and ser have the same preterite conjugations
             case "ser":
                 conjugations.add("yo", "fui");
