@@ -209,14 +209,24 @@ public class PresentCard extends FlashCard {
             return super.getStem(); // end if
         if(List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
                 "cerregir", "vestir", "freir", "gemir", "repetir").contains(verb.toLowerCase()))
-            return super.getStem().replaceAll("e", "i"); // end if
+            for (int i = verb.length() - 1; i > 0; i--)
+            {
+                if (verb.charAt(i) == 'e')
+                    return verb.substring(0, i) + "i" + verb.substring(i + 1, verb.length() - 2);
+            } // end of for
         if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener",
                 "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender",
                 "negar", "sentir", "querer").contains(verb.toLowerCase())) // end if
-            return super.getStem().replaceAll("e", "ie");
+            for (int i = verb.length() - 1; i > 0; i--)
+            {
+                if (verb.charAt(i) == 'e')
+                    return verb.substring(0, i) + "ie" + verb.substring(i + 2, verb.length() - 2);
+            } // end of for
         if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar",
-                "contar", "costar", "recordar", "volver", "resolver", "solver", "jugar").contains(verb.toLowerCase()))
+                "contar", "costar", "recordar", "volver", "resolver", "solver").contains(verb.toLowerCase()))
             return super.getStem().replaceAll("o", "ue");
+        if (verb.toLowerCase().equals("jugar"))
+            return "jueg";
         return super.getStem(); // end if
     } // end getStem
 
