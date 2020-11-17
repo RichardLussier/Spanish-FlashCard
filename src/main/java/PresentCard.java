@@ -105,7 +105,7 @@ public class PresentCard extends FlashCard {
             yoChange.add("caer", "caigo");
             yoChange.add("valer", "valgo");
             yoChange.add("venir", "vengo");
-            yoChange.add("saber", "sé");
+            yoChange.add("saber", "se");
             yoChange.add("poner", "pongo");
             yoChange.add("dar", "doy");
             yoChange.add("caber", "caigo");
