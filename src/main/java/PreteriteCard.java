@@ -60,12 +60,12 @@ public class PreteriteCard extends FlashCard {
             if (verb.length() > 3 && verb.endsWith("ucir")) {  //"ucir" verbs have a seperate set of endings
                 answer = verb.substring(0, verb.length() - 3) + "j" + conjugations.getValue(subject);
                 return true;
-            }
+            } //end of if
             if (iregRoots.getValue(verb.toLowerCase()) != null) {
                 answer = iregRoots.getValue(verb.toLowerCase()) + conjugations.getValue(subject);
                 return true;
-            }
-        }
+            } //end of if
+        } //end of if
         if (!verb.endsWith("ar")) {
             String ending = verb.substring(verb.length() - 3, verb.length() - 2);
             if ("aeiou".contains(ending)) {
@@ -166,20 +166,24 @@ public class PreteriteCard extends FlashCard {
         return true;
     } // end conjugateStemIrreg
 
+    /**
+     * this method will return the stem of car-gar-zar verbs and will fix e-to-i verbs
+     * @return: the correct conjugated stem (no root yet)
+     */
     protected String getStem() {
         if (verb.length() < 3) return verb;
 
         String last3 = verb.substring(verb.length() - 3); //Car Gar Zar verbs
         if (last3.equals("car")) {
-            return last3 + "qu";
+            return verb.substring(0, verb.length() - 3) + "qu";
         } else if (last3.equals("gar")) {
-            return last3 + "gu";
+            return verb.substring(0, verb.length() - 3) + "gu";
         } else if (last3.equals("zar")) {
-            return last3 + "c";
+            return verb.substring(0, verb.length() - 3) + "c";
         } else {
             return super.getStem(); //TODO: Add stem changing e to i for ir verbs
-        }
-    }
+        } //end of else
+    } //end of getStem method
 
 
     /**
