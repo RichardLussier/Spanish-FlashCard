@@ -118,7 +118,7 @@ public class StudyGame {
                 correctCards.add(currentCard);
             } //end of if
             else{
-                System.out.println("Incorrect");
+                System.out.println("Incorrect. The correct answer is " + currentCard.answer);
                 studyCards.enqueue(currentCard);
             } //end of else
         } //end of while
