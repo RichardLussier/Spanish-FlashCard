@@ -217,10 +217,10 @@ public class PresentCard extends FlashCard {
         if(List.of("pensar", "empezar", "comenzar", "preferir", "acertar", "tener",
                 "venir", "cerrar", "mentir", "fregar", "hervir", "confesar", "defender",
                 "negar", "sentir", "querer").contains(verb.toLowerCase())) // end if
-            for (int i = verb.length() - 1; i > 0; i--)
+            for (int i = super.getStem().length() - 1; i > 0; i--)
             {
                 if (verb.charAt(i) == 'e')
-                    return verb.substring(0, i) + "ie" + verb.substring(i + 2, verb.length() - 2);
+                    return verb.substring(0, i) + "ie" + verb.substring(i + 1, super.getStem().length());
             } // end of for
         if(List.of("dormir", "almorzar", "morir", "probar", "mover", "colgar", "mostrar",
                 "contar", "costar", "recordar", "volver", "resolver", "solver").contains(verb.toLowerCase()))
