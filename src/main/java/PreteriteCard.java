@@ -49,6 +49,7 @@ public class PreteriteCard extends FlashCard {
         iregRoots.add("venir", "vin");
         iregRoots.add("haber", "hub");
         iregRoots.add("caber", "cup");
+        iregRoots.add("estar", "estuv");
 
         if (iregRoots.getValue(verb.toLowerCase()) != null || (verb.length() > 3 && verb.endsWith("ucir"))) {
             conjugations.add("yo", "e"); //Irregular set of endings
