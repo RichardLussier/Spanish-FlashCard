@@ -15,7 +15,7 @@ class VerbDictionaryTest {
      */
 
     @Test
-    void add() {
+    void addTest() {
         // adding to a new empty dictionary, so the method
         // should return null
         assertNull(test.add("estar", "tu"));
@@ -28,7 +28,7 @@ class VerbDictionaryTest {
     } // end add test
 
     @Test
-    void getValue() {
+    void getValueTest() {
         // adding to the empty dictionary
         test.add("estar", "yo");
         test.add("bailar", "tu");
@@ -45,4 +45,4 @@ class VerbDictionaryTest {
         // testing getValue on a nonexistent key
         assertNotEquals("tu", test.getValue("decir"));
     } // end getValue test
-}
+} // end VerbDictionaryTest

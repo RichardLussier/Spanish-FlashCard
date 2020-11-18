@@ -24,10 +24,10 @@ class PreteriteCardTest {
         assertEquals("diste", test4.answer); // also tests conjugateIrreg
         test5.conjugateVerb();
         assertEquals("jugue", test5.answer); // also tests conjugateIrreg
-    }
+    } // end of conjugateVerbTest
 
     @Test
     void getTenseTest() {
         assertEquals("Preterite", test.getTense());
-    }
-}
+    } // end of getTenseTest
+} // end of PreteriteCardTest
