@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * This method was used early on in the project in order to test
+ * This class was used early on in the project in order to test
  * the methods before client or the JUnit tests were created
  */
 public class Main {
@@ -60,5 +60,6 @@ public class Main {
         System.out.println(verbTense);
         System.out.println(subjectVerb);
         System.out.println(test.getAnswer());
+
     } //end of main method
 } //end of Main class
