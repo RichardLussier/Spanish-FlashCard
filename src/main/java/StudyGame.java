@@ -64,6 +64,9 @@ public class StudyGame {
                 default:
                     System.out.println("Invalid tense. Please try again.");
             } //end of switch
+            if(tense.equals("stop")){
+                break;
+            } //end of if
             System.out.println("Please type the next tense you would like to study, or \"stop\" to finish.");
         } //end of while
     } //end of askForTense method
