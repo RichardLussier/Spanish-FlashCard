@@ -3,6 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This method was used early on in the project in order to test
+ * the methods before client or the JUnit tests were created
+ */
 public class Main {
 
     public static void main(String[] args) {
