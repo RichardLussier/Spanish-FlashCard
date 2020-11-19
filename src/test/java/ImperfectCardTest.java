@@ -14,10 +14,10 @@ class ImperfectCardTest {
     @Test
     void getTenseTest() {
         assertEquals("Imperfect", test.getTense());
-    }
+    } // end getTenseTest
 
     @Test
-    void conjugateVerb() {
+    void conjugateVerbTest() {
         test.conjugateVerb();
         assertEquals("hablaba", test.answer);
 
@@ -32,5 +32,5 @@ class ImperfectCardTest {
 
         test4.conjugateVerb(); // tests the conjugateIrreg method as well
         assertEquals("veias", test4.answer);
-    }
-}
+    } // end conjugateVerbTest
+} // end ImperfectCardTest

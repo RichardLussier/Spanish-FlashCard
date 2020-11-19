@@ -12,7 +12,7 @@ class QueueForFlashCardsTest {
         test.enqueue("apple");
         test.enqueue("orange");
         assertEquals(3, test.getSize());
-    }
+    } // end enqueueTest
 
     @Test
     void dequeueTest() {
@@ -22,7 +22,7 @@ class QueueForFlashCardsTest {
         assertEquals("test", test.dequeue());
         assertEquals("apple", test.dequeue());
         assertEquals("orange", test.dequeue());
-    }
+    } // end dequeueTest
 
     @Test
     void getFrontTest() {
@@ -32,7 +32,7 @@ class QueueForFlashCardsTest {
         assertEquals("test", test.getFront());
         test.dequeue();
         assertEquals("apple", test.getFront());
-    }
+    } // end getFrontTest
 
     @Test
     void isEmptyTest() {
@@ -45,7 +45,7 @@ class QueueForFlashCardsTest {
         test.dequeue();
         test.dequeue();
         assertTrue(test.isEmpty());
-    }
+    } // end isEmptyTest
 
     @Test
     void getSizeTest() {
@@ -54,5 +54,5 @@ class QueueForFlashCardsTest {
         test.enqueue("apple");
         test.enqueue("orange");
         assertEquals(3, test.getSize());
-    }
-}
+    } // end getSizeTest
+} // end QueueForFlashCardsTest

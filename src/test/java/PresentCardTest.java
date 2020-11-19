@@ -14,7 +14,7 @@ class PresentCardTest {
     @Test
     void getTenseTest() {
         assertEquals("Present", test.getTense());
-    }
+    } // end of getTenseTest
 
     @Test
     void conjugateVerbTest() {
@@ -29,5 +29,5 @@ class PresentCardTest {
 
         test3.conjugateVerb(); // tests the conjugateIrreg method as well
         assertEquals("juegas", test3.answer);
-    }
-}
+    } // end of conjugateVerbTest
+} // end of PresentCardTest
