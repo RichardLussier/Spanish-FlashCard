@@ -76,8 +76,8 @@ public class PreteriteCard extends FlashCard {
                 conjugations.add("ustedes", "yeron");
                 answer = getStem() + conjugations.getValue(subject);
                 return true;
-            }
-        }
+            } //end of if
+        } //end of if
         return false;
     } //end of conjugateIrreg method
 
