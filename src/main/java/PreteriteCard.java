@@ -170,10 +170,10 @@ public class PreteriteCard extends FlashCard {
 
     /**
      * this method will return the stem of car-gar-zar verbs and will fix e-to-i verbs
+     *
      * @return: the correct conjugated stem (no root yet)
      */
     protected String getStem() {
-
         if (findEnding().equals("ir") && (subject.equals("usted") || subject.equals("ustedes"))) { //The stem may change with certain ir verbs only in usted or ustedes subjects
             if (verb.toLowerCase().equals("morir") || verb.toLowerCase().equals("dormir")) //Replace all o's with u's
                 return super.getStem().replaceAll("o", "u");
@@ -187,18 +187,20 @@ public class PreteriteCard extends FlashCard {
                 } // end of for
         }
 
-        if (verb.length() < 3) return verb;
-        String last3 = verb.substring(verb.length() - 3); //Car Gar Zar verbs
-        String stem3 = verb.substring(0, verb.length() - 3); //The original verb without the ending
-        if (last3.equals("car")) {
-            return stem3 + "qu";
-        } else if (last3.equals("gar")) {
-            return stem3 + "gu";
-        } else if (last3.equals("zar")) {
-            return stem3 + "c";
-        } else {
-            return super.getStem(); //TODO: Add stem changing e to i for ir verbs
-        } //end of else
+        if (subject.equals("yo")) { //Verbs that end in car, gar, or zar will change their endings if the subject is yo
+            if (verb.length() < 3) return verb;
+            String last3 = verb.substring(verb.length() - 3); //The ending of the verbs
+            String stem3 = verb.substring(0, verb.length() - 3); //The original verb without the ending
+            switch (last3) {
+                case "car":
+                    return stem3 + "qu";
+                case "gar":
+                    return stem3 + "gu";
+                case "zar":
+                    return stem3 + "c";
+            }
+        }
+        return super.getStem(); //If there are no irregularities, return the verb without the ending
     } //end of getStem method
 
 
