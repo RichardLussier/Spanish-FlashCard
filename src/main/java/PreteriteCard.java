@@ -16,7 +16,7 @@ public class PreteriteCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
 
-        if (!conjugateIrreg()) {
+        if (!conjugateIrreg()) { //Only execute the rest of the code if the word hasn't already been conjugated
             if (ending.equals("ar")) {
                 addPreteriteAr();
                 answer = getStem() + conjugations.getValue(subject);
@@ -39,8 +39,8 @@ public class PreteriteCard extends FlashCard {
      */
     @Override
     protected boolean conjugateIrreg() {
-        if (conjugateStemIrreg()) return true;
-        VerbDictionary<String, String> iregRoots = new VerbDictionary<>();
+        if (conjugateStemIrreg()) return true; //Do nothing if the verb has already been conjugated with the complete irregulars
+        VerbDictionary<String, String> iregRoots = new VerbDictionary<>(); //Dictionary of irregular verbs
         iregRoots.add("poder", "pud");
         iregRoots.add("querer", "quis");
         iregRoots.add("poner", "pus");
@@ -53,7 +53,7 @@ public class PreteriteCard extends FlashCard {
         iregRoots.add("caber", "cup");
         iregRoots.add("estar", "estuv");
 
-        if (iregRoots.getValue(verb.toLowerCase()) != null || (verb.length() > 3 && verb.endsWith("ucir"))) {
+        if (iregRoots.getValue(verb.toLowerCase()) != null || (verb.length() > 3 && verb.endsWith("ucir"))) { //All of the listed verbs and verbs ending in "ucir" have a separate set of irregular endings
             conjugations.add("yo", "e"); //Irregular set of endings
             conjugations.add("tu", "iste");
             conjugations.add("usted", "o");
@@ -64,19 +64,19 @@ public class PreteriteCard extends FlashCard {
                 return true;
             } //end of if
             if (iregRoots.getValue(verb.toLowerCase()) != null) {
-                answer = iregRoots.getValue(verb.toLowerCase()) + conjugations.getValue(subject);
+                answer = iregRoots.getValue(verb.toLowerCase()) + conjugations.getValue(subject); //Replace the stem with the value paired with the key
                 return true;
             } //end of if
         } //end of if
         if (!verb.endsWith("ar")) {
             String ending = verb.substring(verb.length() - 3, verb.length() - 2);
-            if ("aeiou".contains(ending)) {
-                conjugations.add("yo", "i"); // If the words ends with a
+            if ("aeiou".contains(ending)) { //
+                conjugations.add("yo", "i"); // If the words ends with a vowel, add y to to usted and ustedes
                 conjugations.add("tu", "iste");
                 conjugations.add("usted", "yo");
                 conjugations.add("nosotros", "imos");
                 conjugations.add("ustedes", "yeron");
-                answer = getStem() + conjugations.getValue(subject);
+                answer = getStem() + conjugations.getValue(subject); //The original stem but with added y
                 return true;
             } //end of if
         } //end of if
@@ -185,7 +185,7 @@ public class PreteriteCard extends FlashCard {
                     if (verb.charAt(i) == 'e')
                         return verb.substring(0, i) + "i" + verb.substring(i + 1, verb.length() - 2);
                 } // end of for
-        }
+        } //end if
 
         if (subject.equals("yo")) { //Verbs that end in car, gar, or zar will change their endings if the subject is yo
             if (verb.length() < 3) return verb;
@@ -198,8 +198,8 @@ public class PreteriteCard extends FlashCard {
                     return stem3 + "gu";
                 case "zar":
                     return stem3 + "c";
-            }
-        }
+            } //end switch
+        } //end if
         return super.getStem(); //If there are no irregularities, return the verb without the ending
     } //end of getStem method
 
