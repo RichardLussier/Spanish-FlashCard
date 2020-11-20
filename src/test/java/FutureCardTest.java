@@ -9,7 +9,7 @@ class FutureCardTest {
     @Test
     void getTenseTest() {
         assertEquals("Future", test.getTense());
-    }
+    } // end of getTenseTest
 
     @Test
     void conjugateVerbTest() {
@@ -18,5 +18,5 @@ class FutureCardTest {
         test1.conjugateVerb();
         assertEquals("estare", test1.answer);
 
-    }
-}
+    } // end of conjugateVerbTest
+} // end of FutureCardTest

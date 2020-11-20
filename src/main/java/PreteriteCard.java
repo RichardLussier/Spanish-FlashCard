@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * This class holds the methods needed to create a flashcard in the preterite tense
  */
@@ -62,12 +60,12 @@ public class PreteriteCard extends FlashCard {
             if (verb.length() > 3 && verb.endsWith("ucir")) {  //"ucir" verbs have a seperate set of endings
                 answer = verb.substring(0, verb.length() - 3) + "j" + conjugations.getValue(subject);
                 return true;
-            }
+            } //end of if
             if (iregRoots.getValue(verb.toLowerCase()) != null) {
                 answer = iregRoots.getValue(verb.toLowerCase()) + conjugations.getValue(subject);
                 return true;
-            }
-        }
+            } //end of if
+        } //end of if
         if (!verb.endsWith("ar")) {
             String ending = verb.substring(verb.length() - 3, verb.length() - 2);
             if ("aeiou".contains(ending)) {
@@ -78,8 +76,8 @@ public class PreteriteCard extends FlashCard {
                 conjugations.add("ustedes", "yeron");
                 answer = getStem() + conjugations.getValue(subject);
                 return true;
-            }
-        }
+            } //end of if
+        } //end of if
         return false;
     } //end of conjugateIrreg method
 
@@ -168,6 +166,10 @@ public class PreteriteCard extends FlashCard {
         return true;
     } // end conjugateStemIrreg
 
+    /**
+     * this method will return the stem of car-gar-zar verbs and will fix e-to-i verbs
+     * @return: the correct conjugated stem (no root yet)
+     */
     protected String getStem() {
 
         if (findEnding().equals("ir") && (subject.equals("usted") || subject.equals("ustedes"))) { //The stem may change with certain ir verbs only in usted or ustedes subjects
@@ -194,8 +196,8 @@ public class PreteriteCard extends FlashCard {
             return stem3 + "c";
         } else {
             return super.getStem(); //TODO: Add stem changing e to i for ir verbs
-        }
-    }
+        } //end of else
+    } //end of getStem method
 
 
     /**
