@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * This class holds the methods needed to create a flashcard in the preterite tense
  */
