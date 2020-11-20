@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * This class holds the methods needed to create a flashcard in the preterite tense
  */
@@ -37,7 +39,7 @@ public class PreteriteCard extends FlashCard {
      */
     @Override
     protected boolean conjugateIrreg() {
-        if(conjugateStemIrreg()) return true;
+        if (conjugateStemIrreg()) return true;
         VerbDictionary<String, String> iregRoots = new VerbDictionary<>();
         iregRoots.add("poder", "pud");
         iregRoots.add("querer", "quis");
@@ -167,15 +169,29 @@ public class PreteriteCard extends FlashCard {
     } // end conjugateStemIrreg
 
     protected String getStem() {
-        if (verb.length() < 3) return verb;
 
+        if (findEnding().equals("ir") && (subject.equals("usted") || subject.equals("ustedes"))) { //The stem may change with certain ir verbs only in usted or ustedes subjects
+            if (verb.toLowerCase().equals("morir") || verb.toLowerCase().equals("dormir")) //Replace all o's with u's
+                return super.getStem().replaceAll("o", "u");
+
+            if (List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
+                    "cerregir", "vestir", "freir", "gemir", "repetir", "preferir",
+                    "venir", "mentir", "hervir", "sentir").contains(verb.toLowerCase())) //In these verbs replace the last e with i
+                for (int i = verb.length() - 1; i > 0; i--) {
+                    if (verb.charAt(i) == 'e')
+                        return verb.substring(0, i) + "i" + verb.substring(i + 1, verb.length() - 2);
+                } // end of for
+        }
+
+        if (verb.length() < 3) return verb;
         String last3 = verb.substring(verb.length() - 3); //Car Gar Zar verbs
+        String stem3 = verb.substring(0, verb.length() - 3); //The original verb without the ending
         if (last3.equals("car")) {
-            return last3 + "qu";
+            return stem3 + "qu";
         } else if (last3.equals("gar")) {
-            return last3 + "gu";
+            return stem3 + "gu";
         } else if (last3.equals("zar")) {
-            return last3 + "c";
+            return stem3 + "c";
         } else {
             return super.getStem(); //TODO: Add stem changing e to i for ir verbs
         }
