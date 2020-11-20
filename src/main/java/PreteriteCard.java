@@ -16,7 +16,8 @@ public class PreteriteCard extends FlashCard {
     public void conjugateVerb() {
         String ending = findEnding();
 
-        if (!conjugateIrreg()) { //Only execute the rest of the code if the word hasn't already been conjugated
+        if (!conjugateIrreg()) { //Only execute the rest of
+                                // the code if the word hasn't already been conjugated
             if (ending.equals("ar")) {
                 addPreteriteAr();
                 answer = getStem() + conjugations.getValue(subject);
@@ -39,7 +40,8 @@ public class PreteriteCard extends FlashCard {
      */
     @Override
     protected boolean conjugateIrreg() {
-        if (conjugateStemIrreg()) return true; //Do nothing if the verb has already been conjugated with the complete irregulars
+        if (conjugateStemIrreg()) return true; //Do nothing if the verb has already
+                                            // been conjugated with the complete irregulars
         VerbDictionary<String, String> iregRoots = new VerbDictionary<>(); //Dictionary of irregular verbs
         iregRoots.add("poder", "pud");
         iregRoots.add("querer", "quis");
@@ -53,7 +55,9 @@ public class PreteriteCard extends FlashCard {
         iregRoots.add("caber", "cup");
         iregRoots.add("estar", "estuv");
 
-        if (iregRoots.getValue(verb.toLowerCase()) != null || (verb.length() > 3 && verb.endsWith("ucir"))) { //All of the listed verbs and verbs ending in "ucir" have a separate set of irregular endings
+        if (iregRoots.getValue(verb.toLowerCase()) != null ||
+                (verb.length() > 3 && verb.endsWith("ucir"))) { //All of the listed verbs and verbs ending in
+                                                            // "ucir" have a separate set of irregular endings
             conjugations.add("yo", "e"); //Irregular set of endings
             conjugations.add("tu", "iste");
             conjugations.add("usted", "o");
@@ -64,7 +68,8 @@ public class PreteriteCard extends FlashCard {
                 return true;
             } //end of if
             if (iregRoots.getValue(verb.toLowerCase()) != null) {
-                answer = iregRoots.getValue(verb.toLowerCase()) + conjugations.getValue(subject); //Replace the stem with the value paired with the key
+                answer = iregRoots.getValue(verb.toLowerCase()) +
+                        conjugations.getValue(subject); //Replace the stem with the value paired with the key
                 return true;
             } //end of if
         } //end of if
@@ -174,13 +179,17 @@ public class PreteriteCard extends FlashCard {
      * @return: the correct conjugated stem (no root yet)
      */
     protected String getStem() {
-        if (findEnding().equals("ir") && (subject.equals("usted") || subject.equals("ustedes"))) { //The stem may change with certain ir verbs only in usted or ustedes subjects
+        if (findEnding().equals("ir") && (subject.equals("usted") || subject.equals("ustedes"))) { //The stem may change
+                                                                                            // with certain ir verbs
+                                                                                            // only in usted or ustedes
+                                                                                            // subjects
             if (verb.toLowerCase().equals("morir") || verb.toLowerCase().equals("dormir")) //Replace all o's with u's
                 return super.getStem().replaceAll("o", "u");
 
             if (List.of("pedir", "decir", "seguir", "servir", "competir", "elegir",
                     "cerregir", "vestir", "freir", "gemir", "repetir", "preferir",
-                    "venir", "mentir", "hervir", "sentir").contains(verb.toLowerCase())) //In these verbs replace the last e with i
+                    "venir", "mentir", "hervir", "sentir").contains(verb.toLowerCase())) //In these verbs replace the
+                                                                                        // last e with i
                 for (int i = verb.length() - 1; i > 0; i--) {
                     if (verb.charAt(i) == 'e')
                         return verb.substring(0, i) + "i" + verb.substring(i + 1, verb.length() - 2);
